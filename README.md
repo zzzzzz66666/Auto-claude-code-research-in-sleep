@@ -48,7 +48,10 @@ claude
 > /research-pipeline "your research direction"  # Full pipeline: Workflow 1 → 2 → 3 end-to-end
 ```
 
-> **Tip:** Workflows pause at checkpoints for your approval by default. Add `AUTO_PROCEED=true` to run fully autonomously (great for overnight runs).
+> **Tip:** Workflows auto-continue at checkpoints by default (`AUTO_PROCEED=true`). To pause and review before each major step (e.g., before committing GPU time), override in your command:
+> ```
+> /research-pipeline "your topic" — AUTO_PROCEED: false
+> ```
 
 > **Important:** Codex MCP uses the model from `~/.codex/config.toml`, not from skill files. Make sure it says `model = "gpt-5.4"` — otherwise it may default to `gpt-4o`. Run `codex setup` or edit the file directly.
 
