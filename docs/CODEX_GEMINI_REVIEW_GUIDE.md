@@ -51,7 +51,7 @@ The bridge auto-loads `~/.gemini/.env` if present.
 
 ## Why direct API is the default
 
-- This path is designed to maximize reuse of the original ARIS review-heavy skills while minimizing skill changes.
+- This path is designed to maximize reuse of the original ARIS reviewer-aware skills while minimizing skill changes.
 - The `gemini-review` bridge preserves the same `review` / `review_reply` / `review_start` / `review_reply_start` / `review_status` contract used by the existing Claude-review overlay.
 - Using the direct Gemini API removes the extra local CLI hop and keeps the reviewer path closer to the API-backed integrations already used elsewhere in ARIS.
 
@@ -97,15 +97,22 @@ codex -C /path/to/your/project
 
 ## What gets overridden
 
-The overlay only replaces review-heavy skills:
+The overlay replaces the predefined reviewer-aware Codex skills:
 
+- `idea-creator`
+- `idea-discovery`
+- `idea-discovery-robot`
 - `research-review`
 - `novelty-check`
 - `research-refine`
 - `auto-review-loop`
+- `grant-proposal`
 - `paper-plan`
 - `paper-figure`
+- `paper-poster`
+- `paper-slides`
 - `paper-write`
+- `paper-writing`
 - `auto-paper-improvement-loop`
 
 Everything else still comes from the upstream `skills/skills-codex/` package.
@@ -118,7 +125,7 @@ For long paper or project reviews, use:
 - `review_reply_start`
 - `review_status`
 
-Why: even on the direct API path, long synchronous reviewer calls can still hit host-side MCP tool timeouts. The async `review*` flow keeps the original review-heavy skills usable without changing their behavior.
+Why: even on the direct API path, long synchronous reviewer calls can still hit host-side MCP tool timeouts. The async `review*` flow keeps the original reviewer-aware skills usable without changing their behavior.
 
 ## Project config
 

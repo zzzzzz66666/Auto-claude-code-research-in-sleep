@@ -51,7 +51,7 @@ chmod 600 ~/.gemini/.env
 
 ## 为什么默认走 direct API
 
-- 这条路径的目标是：**最大化复用原始 ARIS 的 review-heavy skills，同时最少改 skill**。
+- 这条路径的目标是：**最大化复用原始 ARIS 的 reviewer-aware skills，同时最少改 skill**。
 - `gemini-review` bridge 保留了与 Claude-review overlay 相同的 `review` / `review_reply` / `review_start` / `review_reply_start` / `review_status` 契约。
 - 直接走 Gemini API 可以去掉本地 CLI 这一跳，让 reviewer 路径更接近 ARIS 里已有的 API 型集成方式。
 
@@ -98,15 +98,22 @@ codex -C /path/to/your/project
 
 ## 会覆盖哪些 skill
 
-这个 overlay 只替换 review-heavy skills：
+这个 overlay 会替换预定义的 reviewer-aware Codex skills：
 
+- `idea-creator`
+- `idea-discovery`
+- `idea-discovery-robot`
 - `research-review`
 - `novelty-check`
 - `research-refine`
 - `auto-review-loop`
+- `grant-proposal`
 - `paper-plan`
 - `paper-figure`
+- `paper-poster`
+- `paper-slides`
 - `paper-write`
+- `paper-writing`
 - `auto-paper-improvement-loop`
 
 其它能力仍然来自上游 `skills/skills-codex/`。
@@ -119,7 +126,7 @@ codex -C /path/to/your/project
 - `review_reply_start`
 - `review_status`
 
-原因：即便走 direct API，超长同步 reviewer 调用仍然可能撞上宿主侧的 MCP timeout。保留异步 `review*` 流程，才能在**不改原有 review-heavy skill 行为**的前提下继续复用它们。
+原因：即便走 direct API，超长同步 reviewer 调用仍然可能撞上宿主侧的 MCP timeout。保留异步 `review*` 流程，才能在**不改原有 reviewer-aware skill 行为**的前提下继续复用它们。
 
 ## 项目配置
 
