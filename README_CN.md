@@ -28,7 +28,7 @@
 
 ## 📢 最近更新
 
-- **2026-03-23** — ![NEW](https://img.shields.io/badge/NEW-red?style=flat-square) 🔧 **3 个 skill 集成到核心工作流**：`/training-check` 实验后自动检查训练质量，`/result-to-claim` 桥接 W2→W3 生成 claims，`/ablation-planner` 主实验后自动设计消融。不可用时静默跳过。社区贡献 by [@JingxuanKang](https://github.com/JingxuanKang)
+- **2026-03-23** — ![NEW](https://img.shields.io/badge/NEW-red?style=flat-square) 🔧 **3 个 skill 集成到核心工作流**：`/training-check`、`/result-to-claim`、`/ablation-planner`。📦 **`compact` 模式** — 生成精简摘要文件，适合短 context 模型和 session 恢复（`— compact: true`）。🔄 **research-refine 断点续跑** — 中断后自动恢复。社区贡献 by [@JingxuanKang](https://github.com/JingxuanKang) & [@couragec](https://github.com/couragec)
 - **2026-03-22** — ![NEW](https://img.shields.io/badge/NEW-red?style=flat-square) 📋 **[模板](templates/)** — 每个工作流的输入模板。📄 **7 个会议模板** — 新增 CVPR、ACL、AAAI、ACM MM（现支持 ICLR/NeurIPS/ICML/CVPR/ACL/AAAI/ACM）。🛡️ **反幻觉修复** — 工作流 2 强制 DBLP → CrossRef → [VERIFY]。🔗 **`base repo`** — 克隆 GitHub 项目作为实验基础（`— base repo: https://github.com/org/project`）
 - **2026-03-21** — ![NEW](https://img.shields.io/badge/NEW-red?style=flat-square) 🏆 **AAAI 2026 接收——纯 Codex CLI 7/10 分！** ARIS-Codex skills 完成，by [@xinbo820-web](https://github.com/xinbo820-web)。详见[社区实操](#-社区实操--用-aris-完成的论文)
 - **2026-03-22** — ![NEW](https://img.shields.io/badge/NEW-red?style=flat-square) 🔍 **[Codex + Gemini 审稿指南](docs/CODEX_GEMINI_REVIEW_GUIDE_CN.md)** — Codex 负责执行，Gemini 通过本地 `gemini-review` MCP bridge + 薄覆盖层 `skills-codex-gemini-review` 负责审稿。默认 direct Gemini API backend，因此可以在最少改 skill 的前提下复用原始 ARIS reviewer-aware skills，包括 poster / slides / grant 这些路径。[英文](docs/CODEX_GEMINI_REVIEW_GUIDE.md)
